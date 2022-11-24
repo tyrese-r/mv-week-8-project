@@ -46,11 +46,95 @@ questionsRouter.get('/', async (req, res) => {
     }
 
 
+    // This is only sending example data for now
     res.send({
-        chosenCategory,
-        chosenDifficulty
+        chosen_category: chosenCategory,
+        chosen_difficulty: chosenDifficulty,
+        count: 3,
+        results: [
+            {
+              "category": "Science: Computers",
+              "type": "boolean",
+              "difficulty": "medium",
+              "question": "All program codes have to be compiled into an executable file in order to be run. This file can then be executed on any machine.",
+              "correct_answer": "False",
+              "incorrect_answers": [
+                "True"
+              ]
+            },
+            {
+              "category": "Sports",
+              "type": "multiple",
+              "difficulty": "medium",
+              "question": "The F1 season of 1994 is remembered for what tragic event?",
+              "correct_answer": "Death of Ayrton Senna (San Marino)",
+              "incorrect_answers": [
+                "The Showdown (Australia)",
+                "Verstappen on Fire (Germany)",
+                "Schumacher&#039;s Ban (Britain)"
+              ]
+            },
+            {
+              "category": "Entertainment: Television",
+              "type": "multiple",
+              "difficulty": "medium",
+              "question": "Which character does voice actress Tara Strong NOT voice?",
+              "correct_answer": "Bubbles (2016)",
+              "incorrect_answers": [
+                "Twilight Sparkle",
+                "Timmy Turner",
+                "Harley Quinn"
+              ]
+            }
+          ]
     })
 })
 
 
 module.exports = { questionsRouter }
+
+
+// Request 3 questions from db
+
+/*
+
+{
+    results: [
+      {
+        "category": "Science: Computers",
+        "type": "boolean",
+        "difficulty": "medium",
+        "question": "All program codes have to be compiled into an executable file in order to be run. This file can then be executed on any machine.",
+        "correct_answer": "False",
+        "incorrect_answers": [
+          "True"
+        ]
+      },
+      {
+        "category": "Sports",
+        "type": "multiple",
+        "difficulty": "medium",
+        "question": "The F1 season of 1994 is remembered for what tragic event?",
+        "correct_answer": "Death of Ayrton Senna (San Marino)",
+        "incorrect_answers": [
+          "The Showdown (Australia)",
+          "Verstappen on Fire (Germany)",
+          "Schumacher&#039;s Ban (Britain)"
+        ]
+      },
+      {
+        "category": "Entertainment: Television",
+        "type": "multiple",
+        "difficulty": "medium",
+        "question": "Which character does voice actress Tara Strong NOT voice?",
+        "correct_answer": "Bubbles (2016)",
+        "incorrect_answers": [
+          "Twilight Sparkle",
+          "Timmy Turner",
+          "Harley Quinn"
+        ]
+      }
+    ]
+  }
+
+  */
