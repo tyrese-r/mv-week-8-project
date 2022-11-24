@@ -5,10 +5,12 @@ import { Header } from "./Components/Header";
 
 function App() {
   const [questions, setQuestions] = useState();
+  const [username, setUsername] = useState();
+  console.log(questions);
   return (
     <div className="App">
       <Header />
-      <StartPage setQuestions={setQuestions} />
+      <StartPage setQuestions={setQuestions} setUsername={setUsername} />
     </div>
   );
 }

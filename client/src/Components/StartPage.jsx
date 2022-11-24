@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-export const StartPage = ({ setQuestions }) => {
+export const StartPage = ({ setQuestions, setUsername }) => {
   const [categoryList, setCategoryList] = useState();
-  const [currentCategory, setCurrentCategory] = useState("General Knowledge");
+  const [currentCategory, setCurrentCategory] = useState(9);
   const [currentDifficulty, setCurrentDifficulty] = useState("easy");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -28,10 +28,10 @@ export const StartPage = ({ setQuestions }) => {
     !isLoading && (
       <>
         <form>
-          {/* <div>
-        <label htmlFor="name">Name:</label>
-        <input name="name" />
-    </div> */}
+          <div>
+            <label htmlFor="name">Name:</label>
+            <input name="name" onChange={(e) => setUsername(e.target.value)} />
+          </div>
           <div>
             <label htmlFor="category">Category:</label>
             <select
