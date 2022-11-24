@@ -1,10 +1,10 @@
 import {useState} from 'react';
-//import Navbar from './Navbar';
+import Choice from './choices';
 import Question from './question';
 
 function Questions() {
     //function get guestion from .question
-    getQuestion = () => {
+    const getQuestion =async () => {
         questionAPI().then(question => {
             this.setState({questionBank: question});
         });
