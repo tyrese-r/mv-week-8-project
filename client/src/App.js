@@ -4,10 +4,12 @@ import { StartPage } from "./Components/StartPage";
 import { Header } from "./Components/Header";
 import { Instructions } from "./Components/Instructions";
 import styled from "styled-components";
+import { Score } from "./Components/Score";
 
 function App() {
   const [questions, setQuestions] = useState();
   const [username, setUsername] = useState();
+
   console.log(questions);
   return (
     <div className="App">
@@ -15,6 +17,7 @@ function App() {
       <Main>
         <Instructions />
         <StartPage setQuestions={setQuestions} setUsername={setUsername} />
+        <Score username={username} />
       </Main>
     </div>
   );
