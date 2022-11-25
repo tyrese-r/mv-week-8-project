@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 export const StartPage = ({ setQuestions, setUsername }) => {
   const [categoryList, setCategoryList] = useState();
   const [currentCategory, setCurrentCategory] = useState("General Knowledge");
   const [currentDifficulty, setCurrentDifficulty] = useState("easy");
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   // fetch all the categories from the API
   useEffect(() => {
@@ -30,6 +32,7 @@ export const StartPage = ({ setQuestions, setUsername }) => {
     const { question } = await response.json();
     // set the questions in state
     setQuestions(question);
+    navigate("/start");
   };
 
   return (
