@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const StartPage = ({ setQuestions, setUsername }) => {
   const [categoryList, setCategoryList] = useState();
-  const [currentCategory, setCurrentCategory] = useState(9);
+  const [currentCategory, setCurrentCategory] = useState("General Knowledge");
   const [currentDifficulty, setCurrentDifficulty] = useState("easy");
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,10 +19,15 @@ export const StartPage = ({ setQuestions, setUsername }) => {
 
   const handleClick = async () => {
     const response = await fetch(
-      `http://localhost:3001/questions?category=${currentCategory}&difficulty=${currentDifficulty}`
+      `http://localhost:3001/questions?category=${currentCategory.replace(
+        "&",
+        "%26"
+      )}&difficulty=${currentDifficulty}`
     );
-    const { results } = await response.json();
-    setQuestions(results);
+    console.log(response);
+    const { question } = await response.json();
+    console.log(question);
+    setQuestions(question);
   };
 
   return (
@@ -41,7 +46,7 @@ export const StartPage = ({ setQuestions, setUsername }) => {
           >
             {categoryList.map((category) => {
               return (
-                <option key={category.id} value={category.id}>
+                <option key={category.id} value={category.name}>
                   {category.name}
                 </option>
               );
