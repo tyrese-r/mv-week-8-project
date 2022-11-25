@@ -29,11 +29,9 @@ async function seed() {
 
   async function scoreUpdate(username, newScore) {
     const currentUser = await User.findByPk(username);
-    console.log("SCORE: ", currentUser.highestScore);
     if (newScore > currentUser.highestScore) {
       currentUser.update({ highestScore: newScore });
     }
-    console.log("SCORE UPDATE: ", currentUser.highestScore);
   }
 
   scoreUpdate("Mario", 2);
