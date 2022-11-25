@@ -3,7 +3,7 @@ const app = express()
 const cors = require('cors')
 const { usersRouter } = require('./routes/users')
 const { questionsRouter } = require('./routes/questions')
-const PORT = 3001
+const PORT = process.env.PORT ?? 3001
 
 app.use(cors())
 app.use(express.json())
