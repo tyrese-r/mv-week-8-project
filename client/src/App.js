@@ -5,6 +5,8 @@ import { Header } from "./Components/Header";
 import { Instructions } from "./Components/Instructions";
 import styled from "styled-components";
 import { Score } from "./Components/Score";
+// import { Questions } from "./Components/Questions";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [questions, setQuestions] = useState();
@@ -14,10 +16,21 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <Instructions />
       <Main>
-        <Instructions />
-        <StartPage setQuestions={setQuestions} setUsername={setUsername} />
-        <Score username={username} />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <StartPage
+                setQuestions={setQuestions}
+                setUsername={setUsername}
+              />
+            }
+          />
+          {/* <Route path="/start" element={<Questions questions={questions} />} /> */}
+          <Route path="/score" element={<Score username={username} />} />
+        </Routes>
       </Main>
     </div>
   );
